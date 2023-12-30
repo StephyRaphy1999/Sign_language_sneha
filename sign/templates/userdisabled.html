@@ -1,0 +1,51 @@
+{%extends 'layout.html'%}
+{%block content%}
+
+<div class="newsletter_right_w3agile py-5" id="newsletter">
+    <div class="container py-xl-5 py-lg-3">
+        <!-- heading title -->
+        <div class="main-title text-center mb-5"><br><br>
+            <h3 class="tittle text-uppercase text-white font-weight-bold">REGISTERED USERS</h3>
+            <div class="title-icon">
+                <i class="fa fa-users"></i>
+            </div>
+            
+        </div>
+
+                <table class="table table-striped table-bordered" style="color: #ffff;">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Gender</th>
+                            <th>Date Of Birth</th>
+                            <th>Email</th>
+                    
+                            <th>Contact</th>
+                            <th>Address</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                <tbody>
+
+                {% for i in a %}
+                <tr>            
+                    <td>{{i.fname}}</td>
+                    <td>{{i.lname}}</td>
+                    <td>{{i.gender}}</td>
+                    <td>{{i.dob}}</td>
+                    <td>{{i.email}}</td>
+                    
+                    <td>{{i.contact}}</td>
+                    <td>{{i.address}}</td>
+                    <td>{{i.age}}</td>
+
+                </tr>       
+                {% endfor %}
+                    
+                </tbody>
+                </table>
+</div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,248 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Intelligence - Corporate Category Bootstrap Responsive Website Template - About : W3Layouts</title>
+
+    <!-- google-fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700;900&display=swap"
+        rel="stylesheet">
+    <!-- //google-fonts -->
+
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="../static/about/css/style-liberty.css">
+
+</head>
+
+<body>
+
+            
+
+
+
+<!-- about banner -->
+<section class="w3l-about-breadcrumb text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-5">
+        <div class="container py-lg-5 py-md-4">
+            <div class="banner-info-grid px-md-5">
+                <h2 class="w3l-title-breadcrumb mb-3">About Us</h2>
+                
+        </div>
+    </div>
+</section>
+<!-- //about banner -->
+
+
+
+
+<!-- About Section -->
+<section class="w3l-content-6" id="skills">
+    <div class="content-6-mian py-5">
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="content-info-in row" >
+                <div class="content-gd col-lg-6 pe-lg-5" >
+                    <img src="../static/about/images/about4.jpg" alt="" class="img-fluid" />
+                    <br><br></div><div style="float: left;">
+                     <p> Communication is the only medium by which we can share our thoughts but for a person with disability (deaf and dumb) it would be difficult to communicate with a normal person.   So a person who lacks hearing and speaking ability cannot stand in race with normal person. It is also difficult for a normal person who doesn’t have any knowledge about sign language to interact with those who have hearing disabilities. Therefore, our project aims to overcome these social difficulties in order to help the physically disabled people. 
+                        Although, there have been many existing projects done to convert sign language to text/audio a system that converts audio to sign language have been rarely developed. So the main aim of our project is to introduce a system that recognize various human voice pulses and deliver information to disabled people in sign language symbols. 
+                        This is a machine learning (ML) based project. This system take audio as input, convert this audio recording message into text and display the relevant Indian sign language image or GIFs which are predefined. This deep learning application in python also recognizes gestures in real-time on a webcam. The user is allowed to write a word on screen which act as virtual board using an object (here we use cap of bottle in this case). These words are connected to make meaningful sentences. This added feature helps the disabled people to communicate back to normal people even without the use of sign language.
+                    </p></div>
+                </div>       
+            </div><br><br>
+    </div>
+</section>
+<!-- About Section -->
+
+
+
+
+
+
+
+               
+
+                <!-- dialog itself, mfp-hide class is required to make dialog hidden -->
+                <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+                    <iframe src="https://player.vimeo.com/video/236931378" frameborder="0"
+                        allow="autoplay; fullscreen" allowfullscreen></iframe>
+                </div>
+                <!--//video-->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!-- Js scripts -->
+<!-- move top -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+    <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+</button>
+<script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("movetop").style.display = "block";
+        } else {
+            document.getElementById("movetop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+<!-- //move top -->
+
+<!-- common jquery plugin -->
+<script src="../static/about/js/jquery-3.3.1.min.js"></script>
+<!-- //common jquery plugin -->
+
+<!-- theme switch js (light and dark)-->
+<script src="../static/about/js/theme-change.js"></script>
+<!-- //theme switch js (light and dark)-->
+
+<!--/stats-number-counter-->
+<script src="../static/about/js/jquery.waypoints.min.js"></script>
+<script src="../static/about/js/jquery.countup.js"></script>
+<script>
+    $('.counter').countUp();
+
+</script>
+<!--//stats-number-counter-->
+
+<!--/owlcarousel-->
+<script src="../static/about/js/owl.carousel.js"></script>
+<!-- //tesimonials-->
+<script>
+    $(document).ready(function() {
+        $("#owl-demo1").owlCarousel({
+            loop: true,
+            nav: false,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                736: {
+                    items: 1,
+                    nav: false
+                }
+            }
+        })
+    })
+
+</script>
+<!-- //tesimonials-->
+
+<!-- magnific popup -->
+<script src="../static/about/js/jquery.magnific-popup.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.popup-with-zoom-anim').magnificPopup({
+            type: 'inline',
+
+            fixedContentPos: false,
+            fixedBgPos: true,
+
+            overflowY: 'auto',
+
+            closeBtnInside: true,
+            preloader: false,
+
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-zoom-in'
+        });
+
+        $('.popup-with-move-anim').magnificPopup({
+            type: 'inline',
+
+            fixedContentPos: false,
+            fixedBgPos: true,
+
+            overflowY: 'auto',
+
+            closeBtnInside: true,
+            preloader: false,
+
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-slide-bottom'
+        });
+    });
+</script>
+<!-- //magnific popup -->
+
+<!-- MENU-JS -->
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+<!-- //MENU-JS -->
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!-- //disable body scroll which navbar is in active -->
+
+<!--bootstrap-->
+<script src="../static/about/js/bootstrap.min.js"></script>
+<!-- //bootstrap-->
+<!-- //Js scripts -->
+
+</body>
+
+</html>
+{% endblock %}

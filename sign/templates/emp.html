@@ -1,0 +1,174 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!--author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+  
+	<head>
+		{% if alert %}
+			<script>
+				alert("Email id already exist!!!!!")
+			</script>
+		{% endif %}
+	
+	
+	
+	
+	  
+<title>Library Membership Form A Flat Responsive Widget Template :: w3layouts</title>
+<!-- meta_tags-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Library Membership form A Flat Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta_tag_Keywords-->
+<!--css_files-->
+	<link rel="stylesheet" href="../static/registeration/css/style.css"/>
+	<link href="../static/registeration/css/style.css" rel="stylesheet" type="text/css" media="all"/><!--stylesheet-->
+	<link rel="stylesheet" href="../static/registeration/css/font-awesome.css"><!--font_wesome_icons-->
+	<link href="//fonts.googleapis.com/css?family=PT+Sans+Caption" rel="stylesheet"><!--online_fonts-->
+	<link href="//fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet"><!--online_fonts-->
+<!--//css_files-->
+</head>
+<body>
+	<br><br><br><br><br><br><br><br><br>
+<div class="w3l-head">
+<h1>registration for Empolyer</h1>
+</div>
+<div class="w3ls-form">
+<form method="post">
+	<div class="w3l-last-grid1">
+		
+		<div class="w3l-last-grid1">
+			<div class="w3l-grid1">
+				<label class="text">First name</label>
+				<div class="w3l-div">
+					<i class="fa fa-user" aria-hidden="true"></i>
+					<input type="text" name="fname" placeholder="first name" required=""/>
+				</div>
+			</div> 
+			<div class="w3l-grid2">
+			<label class="text">Last name</label>
+			<div class="w3l-div">
+				<i class="fa fa-user" aria-hidden="true"></i>
+				<input type="text" name="lname" placeholder="last name" required=""/>
+			</div>
+			</div>
+			<div class="clear"></div>
+		</div>	
+		<div class="w3l-last-grid1">
+			<div class="w3l-grid1">
+				<label class="text">gender</label>
+				<div class="w3l-div">
+					<i class="fa fa-users" aria-hidden="true"></i>
+					<select class="form-control" required="" name="gender">
+						<option>gender</option>
+						<option>Male</option>
+						<option>Female</option>
+					</select>
+				</div>
+			</div>	
+			<div class="w3l-grid2">
+				<label class="text">date of birth</label>
+				<div class="w3l-div">
+					<i class="fa fa-calendar" aria-hidden="true"></i>
+					<input type="text" class="date" id="datepicker" name="dob" placeholder="dob" value="MM/DD/YYYY" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required=""/>
+				</div>	
+			</div>	
+			<div class="clear"></div>
+		</div>
+		<div class="w3l-last-grid1">
+			<div class="w3l-grid1">
+				<label class="text">Your Email</label>
+				<div class="w3l-div">
+					<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					<input type="email" name="email" placeholder="e-mail" required=""/>
+				</div>
+			</div>
+			<div class="w3l-grid2">
+				<label class="text">password</label>
+				<div class="w3l-div">
+					<i class="fa fa-envelope-o" aria-hidden="true"></i>
+					<input type="text" name="password" placeholder="password" required=""/>
+				</div>
+			</div>
+			<div class="clear"></div>
+	    </div>
+		<div class="w3l-last-grid1">
+			<div class="w3l-grid1">	
+				<label class="text">address</label>
+				<div class="w3l-div">
+					<i class="fa fa-location-arrow" aria-hidden="true"></i>
+					<input type="text" name="address" placeholder="current address" required=""/>
+				</div>
+			</div>
+			<div class="w3l-grid2">
+				<label class="text">phone number</label>
+				<div class="w3l-div">
+					<i class="fa fa-phone" aria-hidden="true"></i>
+					<input type="text" name="contact" placeholder="phone number" required=""/>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+			<div class="w3l-right-grid1">
+				<div class="w3l-grid1">
+					<label class="text"> <span>Experience</span></label>
+						<div class="w3l-div">
+						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							<select class="form-contro3" required name="experience">
+								<option>Experience</option>
+								<option>1 year</option>
+								<option>more than 2 years</option>
+								<option>5 years</option>
+								<option>more than 10 years</option>
+							</select>
+						</div>
+				</div>
+	        <label class="text">Qualification</label>
+			<div class="w3l-grid2">
+				<div class="w3l-div">
+					<i class="fa fa-book" aria-hidden="true"></i>
+					<select class="form-contro2" required name="qualification">
+						<option>qualification</option>
+						<option>10 passed</option>
+						<option>+2</option>
+						<option>degree graduate</option>
+						<option>pg</option>
+					</select>
+				</div>
+			</div>
+			</div><div class="clear"></div>
+		
+		
+			</div>
+		<div class="clear"></div>
+		<div class="w3ls-submit">
+			<input type="submit" value="Submit">
+		</div>
+		</div>
+		</div><br><br><br>
+</form>
+</div></body>
+
+<!-- Default-JavaScript -->
+ <script type="text/javascript" src="../static/registeration/js/jquery-2.1.4.min.js"></script>
+
+<!-- Calendar -->
+<script src="../static/registeration/js/jquery-ui.js"></script>
+	<script>
+		$(function() {
+		$( "#datepicker,#datepicker1" ).datepicker();
+		});
+	</script>
+<!-- //Calendar -->
+
+{% endblock %}
+
+
+
