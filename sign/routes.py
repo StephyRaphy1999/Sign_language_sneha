@@ -4,10 +4,12 @@ from sign.models import *
 from flask_login import login_user, current_user, logout_user, login_required
 from random import randint
 import os
+# import Pillow  as PIL
 from flask_session import Session 
 from flask import session
 from flask_login import login_required
 from flask_mail import Message
+# from PIL import image
 
 @app.route('/about')
 def about():
@@ -183,13 +185,13 @@ def logout():
 @login_required
 @app.route('/userorg')
 def userorg():
-    a = registration.query.filter_by(usertype="org",status="NULL").all()
+    a = registration.query.filter_by(usertype="org").all()
     return render_template("userorg.html",a=a)
 
 @login_required
 @app.route('/useremp')
 def useremp():
-    a = registration.query.filter_by(usertype="emp",status="NULL").all()
+    a = registration.query.filter_by(usertype="emp").all()
     return render_template("useremp.html",a=a)
 
 @login_required
@@ -248,6 +250,41 @@ def a_sendmail(email):
     msg.body = f''' Congratulations , Your  Registeration is approved successfully... Now You can login using email id and password '''
     mail.send(msg)
 
+@app.route('/addtech',methods=['GET', 'POST'])
+def addtech():
+
+    if request.method == 'POST':
+        f_name = request.form['fname']
+        l_name = request.form['lname']
+        gender = request.form['gender']
+        dob = request.form['dob']
+        address = request.form['address']
+        email = request.form['email']
+        phone_no = request.form['contact']
+        password = request.form['password']
+        qualification = request.form['qualification']
+        experience= request.form['experience']
+        subject= request.form['sub']
+        # image = request.files['image']
+        # pic_file = save_to_uploads(image)
+        # view = pic_file
+
+        
+        a = registration.query.filter_by(email=email).first()
+        if a:
+            return render_template("emp.html",alert=True)
+        else:
+            my_data = registration(fname=f_name,lname=l_name,address=address,email=email,dob=dob,gender=gender,sub=subject,contact=phone_no,qualification=qualification,experience=experience,password=password,usertype="teacher")
+            db.session.add(my_data) 
+            db.session.commit()
+            return render_template("log.html",alert=True)
+    return render_template("addtech.html")
+
+@login_required
+@app.route('/view')
+def view():
+    a = registration.query.filter_by(usertype="teacher").all()
+    return render_template("view.html",a=a)
 
 
 #  @app.route('/reject_contributor/<int:id>')
@@ -264,4 +301,70 @@ def a_sendmail(email):
 #                   recipients=[email])
 #     msg.body = f''' Sorry , Your  Registeration is rejected. '''
 #     mail.send(msg)
+
+@app.route('/manage_ne')
+def manage_ne():
+    return render_template("manage_ne.html")
+
+@app.route('/add_ne',methods=['GET', 'POST'])
+def add_ne():
+
+    if request.method == 'POST':
+        f_name = request.form['fname']
+        date = request.form['date']
+        description= request.form['discription']
+        image = request.files['image']
+        pic_file = save_to_uploads(image)
+        view = pic_file
+
+        a = registration.query.filter_by(email=email).first()
+        if a:
+            return render_template("emp.html",alert=True)
+        else:
+            my_data = registration(fname=f_name,image=view,date=date,description=description)
+            db.session.add(my_data) 
+            db.session.commit()
+            return render_template("log.html",alert=True)
+    return render_template("add_ne.html")
+
+@login_required
+@app.route('/edit_tech')
+def edit_tech(id):
+    c= registration.query.get_or_404(id)
+    c. f_name = request.form['fname']
+    c. l_name = request.form['lname']
+    c. gender = request.form['gender']
+    c. dob = request.form['dob']
+    c. address = request.form['address']
+    c. email = request.form['email']
+    c. phone_no = request.form['contact']
+    c. password = request.form['password']
+    c. qualification = request.form['qualification']
+    c. experience= request.form['experience'] 
+    c. subject= request.form['sub']
+    c.image = request.files['image']
+    
+    db.session.commit()
+    a_sendmail(c.email)
+    return redirect('/add_tech')
+
+def save_to_uploads(form_picture):
+    random_hex = random_with_N_digits(14)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = str(random_hex) + f_ext
+    print(app.root_path)
+    picture_path = os.path.join(app.root_path, 'static/uploads', picture_fn)
+    
+    output_size = (500, 500)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+    return picture_fn
+   
+
+def random_with_N_digits(n):
+    range_start = 10**(n-1)
+    range_end = (10**n)-1
+    return randint(range_start, range_end)
+
 

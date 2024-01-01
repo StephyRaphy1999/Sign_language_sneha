@@ -31,7 +31,9 @@
                             <th>Contact</th>
                             <th>Address</th>
                             <th>Age</th>
-                            <th>status</th>
+                            <th>subject</th>
+                            <th>Experience</th>
+                            <th>qualification</th>
 
                         </tr>
                     </thead>
@@ -48,12 +50,13 @@
                 <td>{{i.contact}}</td>
                 <td>{{i.address}}</td>
                 <td>{{i.age}}</td>
-                <td>{{i.status}}</td>
+                <td>{{i.subject}}</td>
+                <td>{{i.experience}}</td>
+                <td>{{i.qualification}}</td>
 
-                {% if i.status=="NULL" %}
-                <td><button type="button" class="button1"><a href="/approve_emp/{{i.id}}">Approve</a></button></td>
-                <td><button type="button" class="button1"><a href="/reject_emp/{{i.id}}">Reject</a></button></td>
-                {% endif %}
+                <td><button type="button" class="button1"><a href="">EDIT</a></button></td>
+                <td><button type="button" class="button1"><a href="">DELETE</a></button></td>
+             
                 </tr>       
                 {% endfor %}
                     

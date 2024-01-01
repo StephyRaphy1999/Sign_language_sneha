@@ -22,15 +22,14 @@ class registration(db.Model, UserMixin):
     qualification=db.Column(db.String(80))
     experience=db.Column(db.String(80))
     status=db.Column(db.String(80),default='NULL')
+    sub=db.Column(db.String(80))
 
-    def get_id(self):
-        return str(self.id)
+class event(db.Model, UserMixin):
+    id=db.Column(db.Integer, primary_key=True)
+    fname = db.Column(db.String(80))
+    Image=db.Column(db.String(80))
+    date=db.column(db.String(80))
+    description=db.column(db.String(80))
 
-    def is_authenticated(self):
-        return True
+    
 
-    def is_active(self):
-        return True
-
-    def is_anonymous(self):
-        return False
