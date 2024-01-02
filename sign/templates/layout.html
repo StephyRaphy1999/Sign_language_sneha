@@ -48,13 +48,27 @@ Author URL: http://w3layouts.com
 
           {% if session['ut'] == 'emp' %} 
 
-          {{session['ut']}}
+       
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
+            </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
           <li class="nav-item @@about__active">
-            <a class="nav-link" href="/logout">Logout</a>
+            <a class="nav-link" href="/add_job">Add JOB Opporunity</a>
+          </li>
+          <li class="nav-item @@about__active">
+            <a class="nav-link" href="/manage_job">View And Manage JOB Opporunity</a>
+          </li>
 
+
+          <li class="nav-item @@about__active">
+            <a class="nav-link" href="/logout">View Applicant List</a>
+          </li>
+
+
+          
+          <li class="nav-item @@about__active">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
         </ul>
 
         {% elif session['ut'] == "admin" %} 
@@ -71,7 +85,7 @@ Author URL: http://w3layouts.com
   </ul>
 
           {% elif session['ut'] == "org" %} 
-
+          {% print(session['ut']) %}
 
               <li class="nav-item active">
                   <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -88,11 +102,9 @@ Author URL: http://w3layouts.com
                       <li class="nav-item @@about__active">
                         <a class="nav-link" href="/manage_ne">View And Manage News And Events</a>
                         </li>
-                      <li class="nav-item @@about__active">
-                        <a class="nav-link" href="/about">chatbox</a>
-                        </li>
+                      
                         <li class="nav-item @@about__active">
-                          <a class="nav-link" href="/about">Logout</a>
+                          <a class="nav-link" href="/logout">Logout</a>
                           </li>
         
   

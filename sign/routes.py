@@ -173,12 +173,17 @@ def user():
 @app.route('/logout')
 @login_required
 def logout():
+    print("Before logout code")
+    print("----11----")
     try:
+        print("----1----")
         logout_user()
         session.clear()  # Clear the session data
         print("Logout successful")
         return redirect('/')  # Redirect to the home page or another page after logout
+        print("Before logout code")
     except Exception as e:
+        print("------2--------")
         print("Logout failed with error:", str(e))
         return redirect('/')
 
@@ -302,9 +307,7 @@ def view():
 #     msg.body = f''' Sorry , Your  Registeration is rejected. '''
 #     mail.send(msg)
 
-@app.route('/manage_ne')
-def manage_ne():
-    return render_template("manage_ne.html")
+
 
 @app.route('/add_ne',methods=['GET', 'POST'])
 def add_ne():
@@ -312,41 +315,106 @@ def add_ne():
     if request.method == 'POST':
         f_name = request.form['fname']
         date = request.form['date']
-        description= request.form['discription']
+        description= request.form['description']
+        # image = request.files['image']
+        # pic_file = save_to_uploads(image)
+        # view = pic_file 
+
+        my_data = event(fname=f_name,date=date,description=description)
+        db.session.add(my_data) 
+        db.session.commit()
+        return render_template("add_ne.html",alert=True)
+    return render_template("add_ne.html")
+
+@app.route('/manage_ne')
+def manage_ne():
+    a = event.query.all()
+    return render_template("manage_ne.html",a=a)
+    
+@login_required
+@app.route('/edit_eve/<int:id>')
+def edit_eve(id):
+    c= event.query.get_or_404(id)
+    if request.method == 'POST':
+        
+        c. f_name = request.form['fname']
+        c. description= request.form['description']
+        c. date= request.form['date']
+        # c.image = request.files['image']
+        
+        db.session.commit()
+        return redirect('/add_ne')
+    return render_template("edit_eve.html",c=c)
+
+@login_required
+@app.route('/delete_eve/<int:id>')
+def delete_eve(id):
+    delete= event.query.get_or_404(id)
+    try:
+        db.session.delete(delete)
+        db.session.commit()
+        return render_template("index.html",alert2=True)  
+    except:
+        return 'There was a problem deleting that task'
+
+# add and view job opprunity
+
+@app.route('/add_job',methods=['GET', 'POST'])
+def add_job():
+   if request.method == 'POST':
+        id()
         image = request.files['image']
         pic_file = save_to_uploads(image)
         view = pic_file
 
-        a = registration.query.filter_by(email=email).first()
-        if a:
-            return render_template("emp.html",alert=True)
-        else:
-            my_data = registration(fname=f_name,image=view,date=date,description=description)
-            db.session.add(my_data) 
-            db.session.commit()
-            return render_template("log.html",alert=True)
-    return render_template("add_ne.html")
+        my_data = registration()
+        db.session.add(my_data) 
+        db.session.commit()
+        return render_template("add_job.html",alert=True)
+    
+    
+
+@app.route('/manage_job')
+def manage_job():
+    a = event.query.all()
+    return render_template("manage_job.html",a=a)
+
+# edit the job and delete
 
 @login_required
-@app.route('/edit_tech')
+@app.route('/edit_tech/<int:id>')
 def edit_tech(id):
     c= registration.query.get_or_404(id)
-    c. f_name = request.form['fname']
-    c. l_name = request.form['lname']
-    c. gender = request.form['gender']
-    c. dob = request.form['dob']
-    c. address = request.form['address']
-    c. email = request.form['email']
-    c. phone_no = request.form['contact']
-    c. password = request.form['password']
-    c. qualification = request.form['qualification']
-    c. experience= request.form['experience'] 
-    c. subject= request.form['sub']
-    c.image = request.files['image']
-    
-    db.session.commit()
-    a_sendmail(c.email)
-    return redirect('/add_tech')
+    if request.method == 'POST':
+        
+        c. f_name = request.form['fname']
+        c. l_name = request.form['lname']
+        c. gender = request.form['gender']
+        c. dob = request.form['dob']
+        c. address = request.form['address']
+        c. email = request.form['email']
+        c. phone_no = request.form['contact']
+        c. password = request.form['password']
+        c. qualification = request.form['qualification']
+        c. experience= request.form['experience'] 
+        c. subject= request.form['sub']
+        c.image = request.files['image']
+        
+        db.session.commit()
+        return redirect('/add_tech')
+    return render_template("edit_tech.html",c=c)
+
+@app.route('/delete/<int:id>')
+@login_required
+def delete(id):
+    delete= registration.query.get_or_404(id)
+    try:
+        db.session.delete(delete)
+        db.session.commit()
+        return render_template("index.html",alert2=True)  
+    except:
+        return 'There was a problem deleting that task'
+
 
 def save_to_uploads(form_picture):
     random_hex = random_with_N_digits(14)

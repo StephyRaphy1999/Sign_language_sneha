@@ -1,17 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<head>
-	{% if alert %}
-        <script>
-            alert("Added successfully")
-        </script>
-    {% endif %}
-
-</head>
-
-
-
 
 
 
@@ -54,7 +43,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<label class="text"> Event</label>
 				<div class="w3l-div">
 					<i class="fa fa-calendar-o" aria-hidden="true"></i>
-					<input type="text" name="fname" placeholder="event" required=""/>
+					<input type="text" name="fname" placeholder="event" required=""value="{{c.fname}}"/>
 				</div>
 			</div> 
 			<div class="w3l-last-grid2">
@@ -62,7 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <label class="text">Description</label>
                     <div class="w3l-div">
                         <i class="" aria-hidden="true"></i>
-                        <input type="text" name="description" placeholder="" required=""/>
+                        <input type="text" name="description" placeholder="" required=""value="{{c.description}}"/>
                     </div>
                 </div> 
                 <div class="w3l-grid1">
@@ -70,7 +59,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   
                     <div class="w3l-div">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
-                        <input type="date" name="date" placeholder="image" required=""/>
+                        <input type="date" name="date" placeholder="image" required=""value="{{c.date}}"/>
                     </div>
                 </div>
 			
@@ -80,7 +69,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   
                     <div class="w3l-div">
                         <i class="fa fa-picture-o" aria-hidden="true"></i>
-                        <input type="file" name="image" placeholder="image" required=""/>
+                        <input type="file" name="image" placeholder="image" required=""value="{{c.image}}"/>
                     </div>
                 </div>
 		
