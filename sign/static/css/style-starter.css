@@ -9836,7 +9836,8 @@ a.read:hover span.fa, a.read:hover span.fas {
   display: block;
   box-sizing: border-box;
   border-radius: 50%;
-  color: #eee; }
+  color: cyan;
+ }
 
 .nav-fixed .gg-moon,
 .nav-fixed .gg-moon:after {
@@ -10008,7 +10009,7 @@ a.dropdown-item {
 header.nav-fixed {
   padding: 0px;
   background-color: var(--bg-color);
-  height: 80px;
+  height: 120px;
   border-bottom: none;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05); }
 

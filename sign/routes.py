@@ -101,7 +101,6 @@ def emp():
 
 @app.route('/disabled',methods=['GET', 'POST'])
 def disabled():
-    
     if request.method == 'POST':
         f_name = request.form['fname']
         l_name = request.form['lname']
@@ -121,7 +120,7 @@ def disabled():
             db.session.commit()
             return render_template("log.html",alert=True)
 
-        return render_template("disabled.html")
+    return render_template("disabled.html")
 
 @app.route('/org',methods=['GET', 'POST'])
 def org():
@@ -316,9 +315,9 @@ def add_ne():
         f_name = request.form['fname']
         date = request.form['date']
         description= request.form['description']
-        # image = request.files['image']
-        # pic_file = save_to_uploads(image)
-        # view = pic_file 
+        image = request.files['image']
+        pic_file = save_to_uploads(image)
+        view = pic_file 
 
         my_data = event(fname=f_name,date=date,description=description)
         db.session.add(my_data) 
@@ -340,7 +339,7 @@ def edit_eve(id):
         c. f_name = request.form['fname']
         c. description= request.form['description']
         c. date= request.form['date']
-        # c.image = request.files['image']
+        c.image = request.files['image']
         
         db.session.commit()
         return redirect('/add_ne')

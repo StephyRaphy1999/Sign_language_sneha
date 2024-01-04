@@ -18179,7 +18179,7 @@ p.white {
 .mode-container i.gg-moon {
   display: block;
   cursor: pointer;
-  color: var(--font-color);
+  color: cyan;
 }
 
 .nav-fixed .mode-container i.gg-moon {

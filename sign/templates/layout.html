@@ -53,10 +53,10 @@ Author URL: http://w3layouts.com
             </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
           <li class="nav-item @@about__active">
-            <a class="nav-link" href="/add_job">Add JOB Opporunity</a>
+            <a class="nav-link" href="/add_job">Add Job </a>
           </li>
           <li class="nav-item @@about__active">
-            <a class="nav-link" href="/manage_job">View And Manage JOB Opporunity</a>
+            <a class="nav-link" href="/manage_job"> Manage Job</a>
           </li>
 
 
@@ -85,7 +85,7 @@ Author URL: http://w3layouts.com
   </ul>
 
           {% elif session['ut'] == "org" %} 
-          {% print(session['ut']) %}
+       
 
               <li class="nav-item active">
                   <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -94,13 +94,13 @@ Author URL: http://w3layouts.com
                     <a class="nav-link" href="/addtech">Add Teachers</a>
                     </li>
                     <li class="nav-item @@about__active">
-                      <a class="nav-link" href="/view">view and Manage Teacher</a>
+                      <a class="nav-link" href="/view">view/Manage Teacher</a>
                       </li>
                     <li class="nav-item @@about__active">
                       <a class="nav-link" href="/add_ne">News And Events</a>
                       </li>
                       <li class="nav-item @@about__active">
-                        <a class="nav-link" href="/manage_ne">View And Manage News And Events</a>
+                        <a class="nav-link" href="/manage_ne"> Manage News And Events</a>
                         </li>
                       
                         <li class="nav-item @@about__active">
@@ -117,8 +117,14 @@ Author URL: http://w3layouts.com
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item @@about__active">
-          <a class="nav-link" href="/about">Logout</a>
-        
+          <a class="nav-link" href="/userorg">View Organisation</a></li>
+          <li class="nav-item @@about__active">
+            <a class="nav-link" href="/manage_ne">View News And Events</a></li>
+            <li class="nav-item @@about__active">
+              <a class="nav-link" href="/reg_job">View job </a></li>
+              <li class="nav-item @@about__active">
+              <a class="nav-link" href="/logout">Logout</a></li>
+          
           {% else %} 
           <li class="nav-item active">
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -143,7 +149,7 @@ Author URL: http://w3layouts.com
 
         <!--/search-right-->
         <div class="search-right">
-          <a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a>
+          <!-- <a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a> -->
           <!-- search popup -->
           <div id="search" class="pop-overlay">
             <div class="popup">
@@ -198,18 +204,13 @@ Author URL: http://w3layouts.com
       <div class="container py-md-4">
         <div class="row footer-top-29">
           <div class="col-lg-4 col-md-6 col-sm-7 footer-list-29 footer-1 pr-lg-5">
-            <h6 class="footer-title-29">CONTENT </h6>
-            <p>.The proposed objective is to help people suffering from the problem of hearing and incapability to speakIn this project we introduce 
+            <h6 class="footer-title-29"><b>CONTENT </b></h6>
+            <p>The proposed objective is to help people suffering from the problem of hearing and incapability to speak In this  we introduce 
               new technology that audio to sign language translator using python which helps the normal people to communicate with the disabled 
               ones, also the disabled people can communicate to the normal people with a special feature of detecting words written in free space. </p>
             
-            <p>Email : <a href="mailto:info@example.com">info@example.com</a></p>
-            <div class="main-social-footer-29 mt-4">
-              <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
-              <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
-              <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
-              <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
-            </div>
+          
+            
           </div>
           <div class="col-lg-3 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-sm-0 mt-5">
   
@@ -238,9 +239,7 @@ Author URL: http://w3layouts.com
     <!-- copyright -->
     <section class="w3l-copyright text-center">
       <div class="container">
-        <p class="copy-footer-29">© 2020 Study Course. All rights reserved. Design by <a href="https://w3layouts.com/"
-            target="_blank">
-            W3Layouts</a></p>
+        
       </div>
   
       <!-- move top -->
