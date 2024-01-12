@@ -1,3 +1,6 @@
+
+			
+		
 		
 {% extends 'layout.html' %}
 {% block content %}
@@ -9,12 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
   
-	<head>
-		{% if alert %}
-			<script>
-				alert("Email id already exist!!!!!")
-			</script>
-		{% endif %}
+	
 	
 	
 	
@@ -39,129 +37,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 	<br><br><br><br><br><br><br><br><br>
 <div class="w3l-head">
-<h1>registration for teacher</h1>
+<h1>registration for job</h1>
 </div>
 <div class="w3ls-form">
 <form method="post" enctype="multipart/form-data">
 	<div class="w3l-last-grid1">
 		
-		<div class="w3l-last-grid1">
-			<div class="w3l-grid1">
-				<label class="text">First name</label>
+		<div class="w3l-last-grid2">
+			<!-- <div class="w3l-grid1">
+				<label class="text">user id</label>
 				<div class="w3l-div">
 					<i class="fa fa-user" aria-hidden="true"></i>
-					<input type="text" name="fname" placeholder="first name" required="" value="{{c.fname}}"   />
+					<input type="text" name="fname" placeholder="userid" required=""    />
 				</div>
-			</div> 
+			</div>  -->
 			<div class="w3l-grid2">
-			<label class="text">Last name</label>
+			<label class="text">date</label>
 			<div class="w3l-div">
 				<i class="fa fa-user" aria-hidden="true"></i>
-				<input type="text" name="lname" placeholder="last name" required="" value="{{c.lname}}"/>
+				<input type="text" class="date" id="datepicker" name="date" placeholder="dob" value="MM/DD/YYYY" 
+				onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required=""/ value="{{c.date}}">
+
+				
 			</div>
 			</div>
-			<div class="clear"></div>
+		
 		</div>	
-		<div class="w3l-last-grid1">
+		
 			<div class="w3l-grid1">
-				<label class="text">gender</label>
+				<label class="text">description</label>
 				<div class="w3l-div">
-					<i class="fa fa-users" aria-hidden="true"></i>
-					<select class="form-control" required="" name="gender" value="{{c.gender}}">
-						<option>gender</option>
-						<option>Male</option>
-						<option>Female</option>
-					</select>
-				</div>
-			</div>	
-			<div class="w3l-grid2">
-				<label class="text">date of birth</label>
-				<div class="w3l-div">
-					<i class="fa fa-calendar" aria-hidden="true"></i>
-					<input type="text" class="date" id="datepicker" name="dob" placeholder="dob" value="MM/DD/YYYY" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MM/DD/YYYY';}" required="" value="{{c.dob}}"/>
+					<i class="fa book" aria-hidden="true"></i>
+					<input type="text" name="description" placeholder="description" required=""/ value="{{c.description}}">
 				</div>	
 			</div>	
-			<div class="clear"></div>
+
 		</div>
 		<div class="w3l-last-grid1">
 			<div class="w3l-grid1">
-				<label class="text">Your Email</label>
+				<label class="text">designation</label>
 				<div class="w3l-div">
-					<i class="fa fa-envelope-o" aria-hidden="true"></i>
-					<input type="email" name="email" placeholder="e-mail" required="" value="{{c.email}}"/>
+					<i class="fa book" aria-hidden="true"></i>
+					<input type="text" name="designation" placeholder="designation" required=""/ value="{{c.designation}}">
 				</div>
 			</div>
-			<div class="w3l-grid2">
-				<label class="text">password</label>
+			<div class="w3l-grid1">
+				<label class="text">salary</label>
 				<div class="w3l-div">
-					<i class="fa fa-envelope-o" aria-hidden="true"></i>
-					<input type="text" name="password" placeholder="password" required="" value="{{c.password}}"/>
+					<i class="fa-money" aria-hidden="true"></i>
+					<input type="text" name="salary" placeholder="salary" required=""/ value="{{c.salary}}">
 				</div>
 			</div>
 			<div class="clear"></div>
-	    </div>
-		<div class="w3l-last-grid1">
-			<div class="w3l-grid1">	
-				<label class="text">address</label>
-				<div class="w3l-div">
-					<i class="fa fa-location-arrow" aria-hidden="true"></i>
-					<input type="text" name="address" placeholder="current address" required="" value="{{c.address}}"/>
-				</div>
-			</div>
-			<div class="w3l-grid2">
-				<label class="text">phone number</label>
-				<div class="w3l-div">
-					<i class="fa fa-phone" aria-hidden="true"></i>
-					<input type="text" name="contact" placeholder="phone number" required="" value="{{c.contact}}"/>
-				</div>
-			</div>
-			<div class="clear"></div>
-        </div>
-        <div class="w3l-right-grid1">
-            <div class="w3l-grid1">
-                <label class="text"> <span>subject</span></label>
-                <div class="w3l-div">
-					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-					<input type="text" name="sub" placeholder="subject" required="" value="{{c.sub}}"/>
-				</div>
-			</div>
-			<div class="w3l-right-grid2">
-				<div class="w3l-grid1">
-					<label class="text"> <span>Experience</span></label>
-						<div class="w3l-div">
-						<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-							<select class="form-contro3" required name="experience" value="{{c.experience}}">
-								<option>Experience</option>
-								<option>6 months below</option>
-								<option>more than 1 years</option>
-								<option>5 years below</option>
-								<option> 10 years below</option>
-							</select>
-						</div>
-				</div>
-	        
-			<div class="w3l-grid2">
-                <label class="text">Qualification</label>
-				<div class="w3l-div">
-					<i class="fa fa-book" aria-hidden="true"></i>
-					<select class="form-contro2" required name="qualification">
-						<option>qualification</option>
-						<option>degree graduate</option>
-						<option>pg</option>
-						<option>MD</option>
-						<option>PHD</option>
-					</select>
-				</div>
-			</div>
-	
-			<!-- <div class="w3l-grid1">
-                <label class="text">image</label>
-                <label class="text"> <span></span></label>
-                <div class="w3l-div">
-					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-					<input type="file" name="image" placeholder="image" required=""/>
-				</div>
-			</div> -->
+	    
 			
 		
 		
@@ -191,3 +119,4 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
+		

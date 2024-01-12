@@ -4,7 +4,8 @@ from sign.models import *
 from flask_login import login_user, current_user, logout_user, login_required
 from random import randint
 import os
-# import Pillow  as PIL
+
+from PIL import Image
 from flask_session import Session 
 from flask import session
 from flask_login import login_required
@@ -157,17 +158,7 @@ from sign import app  # Assuming 'sign' is your Flask application instance
 def user():
     return render_template("user.html")
 
-# @app.route('/userorg')
-# def userorg():
-#     return render_template("userorg.html")
 
-# @app.route('/useremp')
-# def useremp():
-#     return render_template("useremp.html")
-
-# @app.route('/userdisabled')
-# def userdisabled():
-#     return render_template("userdisabled.html")
 
 @app.route('/logout')
 @login_required
@@ -325,13 +316,32 @@ def add_ne():
         return render_template("add_ne.html",alert=True)
     return render_template("add_ne.html")
 
+
+
+
+@app.route('/add_job',methods=['GET', 'POST'])
+def add_job():
+    if request.method == 'POST':
+       
+        dates = request.form['date']
+        description = request.form['description']
+        designation= request.form['designation']
+        salary = request.form['salary']
+        
+
+        my_data = addjob(description=description,designation=designation,salary=salary)
+        db.session.add(my_data) 
+        db.session.commit()
+        return redirect('/add_job')
+    return render_template("add_job.html")
+
 @app.route('/manage_ne')
 def manage_ne():
     a = event.query.all()
     return render_template("manage_ne.html",a=a)
     
 @login_required
-@app.route('/edit_eve/<int:id>')
+@app.route('/edit_eve/<int:id>',methods=['GET', 'POST'])
 def edit_eve(id):
     c= event.query.get_or_404(id)
     if request.method == 'POST':
@@ -358,25 +368,46 @@ def delete_eve(id):
 
 # add and view job opprunity
 
-@app.route('/add_job',methods=['GET', 'POST'])
-def add_job():
-   if request.method == 'POST':
-        id()
-        image = request.files['image']
-        pic_file = save_to_uploads(image)
-        view = pic_file
 
-        my_data = registration()
-        db.session.add(my_data) 
+
+        
+@login_required
+@app.route('/edit_job/<int:id>',methods=['GET', 'POST'])
+def edit_job(id):
+    c= addjob.query.get_or_404(id)
+    if request.method == 'POST':
+        c.date = request.form['date']
+        c.description = request.form['description']
+        c.designation= request.form['designation']
+        c.salary = request.form['salary']
+        
+       
         db.session.commit()
-        return render_template("add_job.html",alert=True)
-    
-    
+        return redirect('/manage_job')
+    return render_template("edit_job.html",c=c)
+
+@login_required
+@app.route('/delete_job/<int:id>')
+def delete_job(id):
+    delete= addjob.query.get_or_404(id)
+    try:
+        db.session.delete(delete)
+        db.session.commit()
+        return render_template("index.html",alert2=True)
+    except:
+        return 'There was a problem deleting that task'
 
 @app.route('/manage_job')
 def manage_job():
-    a = event.query.all()
-    return render_template("manage_job.html",a=a)
+    c= addjob.query.all()
+    return render_template("manage_job.html",c=c)
+
+@app.route('/dis_view_job')
+def dis_view_job():
+    c= addjob.query.all()
+    print("helloooooo")
+    exit()
+    return render_template("dis_view_job.html",c=c)
 
 # edit the job and delete
 
@@ -403,6 +434,11 @@ def edit_tech(id):
         return redirect('/add_tech')
     return render_template("edit_tech.html",c=c)
 
+@app.route('/viewjob_dis')
+def vw_job():
+    c= addjob.query.all()
+    return render_template("dis_view_job.html",c=c)
+
 @app.route('/delete/<int:id>')
 @login_required
 def delete(id):
@@ -414,6 +450,9 @@ def delete(id):
     except:
         return 'There was a problem deleting that task'
 
+from PIL import Image
+from random import randint
+import os
 
 def save_to_uploads(form_picture):
     random_hex = random_with_N_digits(14)
@@ -427,11 +466,11 @@ def save_to_uploads(form_picture):
     i.thumbnail(output_size)
     i.save(picture_path)
     return picture_fn
-   
 
 def random_with_N_digits(n):
     range_start = 10**(n-1)
     range_end = (10**n)-1
     return randint(range_start, range_end)
+
 
 
