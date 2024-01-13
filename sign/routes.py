@@ -10,6 +10,7 @@ from flask_session import Session
 from flask import session
 from flask_login import login_required
 from flask_mail import Message
+from datetime import datetime
 # from PIL import image
 
 @app.route('/about')
@@ -310,7 +311,7 @@ def add_ne():
         pic_file = save_to_uploads(image)
         view = pic_file 
 
-        my_data = event(fname=f_name,date=date,description=description)
+        my_data = event(fname=f_name,date=date,description=description,Image=view)
         db.session.add(my_data) 
         db.session.commit()
         return render_template("add_ne.html",alert=True)
@@ -375,7 +376,7 @@ def delete_eve(id):
 @app.route('/edit_job/<int:id>',methods=['GET', 'POST'])
 def edit_job(id):
     c= addjob.query.get_or_404(id)
-    if request.method == 'POST':
+    if request.method == 'POST':                                
         c.date = request.form['date']
         c.description = request.form['description']
         c.designation= request.form['designation']
@@ -393,6 +394,7 @@ def delete_job(id):
     try:
         db.session.delete(delete)
         db.session.commit()
+
         return render_template("index.html",alert2=True)
     except:
         return 'There was a problem deleting that task'
@@ -401,6 +403,35 @@ def delete_job(id):
 def manage_job():
     c= addjob.query.all()
     return render_template("manage_job.html",c=c)
+
+@login_required
+@app.route('/apply_job/<int:id>',methods=['GET', 'POST'])
+def apply_job(id):
+    job= addjob.query.get_or_404(id)
+    job_id=job.id
+    uid=current_user.id
+    print(uid)
+    if request.method == 'POST':
+        image = request.files['resume']
+        pic_file = save_to_uploads(image)
+        view = pic_file 
+        date = datetime.now()
+
+        my_data=apply_job(uid=uid,job_id=job_id,resume=view,date=date)
+        db.session.add(my_data)
+        db.session.commit()
+        return render_template("dis_view_job.html",alert=True)
+    
+    return render_template("apply_job.html")
+
+
+
+
+
+
+
+
+
 
 @app.route('/dis_view_job')
 def dis_view_job():
@@ -412,13 +443,13 @@ def dis_view_job():
 # edit the job and delete
 
 @login_required
-@app.route('/edit_tech/<int:id>')
+@app.route('/edit_tech/<int:id>',methods=['GET', 'POST'])
 def edit_tech(id):
     c= registration.query.get_or_404(id)
     if request.method == 'POST':
         
-        c. f_name = request.form['fname']
-        c. l_name = request.form['lname']
+        c. fname = request.form['fname']
+        c. lname = request.form['lname']
         c. gender = request.form['gender']
         c. dob = request.form['dob']
         c. address = request.form['address']
@@ -428,10 +459,10 @@ def edit_tech(id):
         c. qualification = request.form['qualification']
         c. experience= request.form['experience'] 
         c. subject= request.form['sub']
-        c.image = request.files['image']
+        # c.image = request.files['image']
         
         db.session.commit()
-        return redirect('/add_tech')
+        return redirect('/addtech')
     return render_template("edit_tech.html",c=c)
 
 @app.route('/viewjob_dis')

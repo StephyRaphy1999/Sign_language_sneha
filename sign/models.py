@@ -2,6 +2,7 @@ from sign import db,app,login_manager
 from flask_login import UserMixin
 from flask_table import Table, Col, LinkCol
 from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
 
 @login_manager.user_loader
 def load_user(id):
@@ -25,6 +26,17 @@ class registration(db.Model, UserMixin):
     status=db.Column(db.String(80),default='NULL')
     sub=db.Column(db.String(80))
 
+
+
+class addjob(db.Model, UserMixin):
+    id=db.Column(db.Integer, primary_key=True)
+    user_id= db.Column(db.Integer, ForeignKey('registration.id'))
+    uid=relationship('registration',foreign_keys=[user_id])
+    date=db.Column(db.String(80))
+    description=db.Column(db.String(80))
+    designation=db.Column(db.String(80))
+    salary=db.Column(db.String(80))
+
 class event(db.Model, UserMixin):
     id=db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(80))
@@ -32,19 +44,13 @@ class event(db.Model, UserMixin):
     date=db.Column(db.String(80))
     description=db.Column(db.String(80))
 
-class addjob(db.Model, UserMixin):
-    id=db.Column(db.Integer, primary_key=True)
-    userid= db.Column(db.Integer,ForeignKey('registration.id'))
-    date=db.Column(db.String(80))
-    description=db.Column(db.String(80))
-    designation=db.Column(db.String(80))
-    salary=db.Column(db.String(80))
-
 class apply_job(db.Model, UserMixin):
     id=db.Column(db.Integer, primary_key=True)
-    title=db.Column(db.String(80))
-    description=db.Column(db.String(80))
-    image=db.Column(db.String(80))
+    user_id= db.Column(db.Integer, ForeignKey('registration.id'))
+    uid=relationship('registration',foreign_keys=[user_id])
+    job_id= db.Column(db.Integer, ForeignKey('addjob.id'))
+    jid=relationship('addjob',foreign_keys=[job_id])
+    resume=db.Column(db.String(80))
     date=db.Column(db.String(80))
     
 
