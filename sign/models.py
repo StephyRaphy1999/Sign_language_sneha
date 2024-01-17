@@ -44,13 +44,24 @@ class event(db.Model, UserMixin):
     date=db.Column(db.String(80))
     description=db.Column(db.String(80))
 
+
+
 class apply_job(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('registration.id'))
+    job_id = db.Column(db.Integer, db.ForeignKey('addjob.id'))
+    jid = db.relationship('addjob', foreign_keys=[job_id])
+    resume = db.Column(db.String(80))
+    date = db.Column(db.String(80))
+    user = db.relationship('registration', foreign_keys=[user_id])
+
+
+    
+class chat_tec(db.Model, UserMixin):
     id=db.Column(db.Integer, primary_key=True)
     user_id= db.Column(db.Integer, ForeignKey('registration.id'))
     uid=relationship('registration',foreign_keys=[user_id])
-    job_id= db.Column(db.Integer, ForeignKey('addjob.id'))
-    jid=relationship('addjob',foreign_keys=[job_id])
-    resume=db.Column(db.String(80))
-    date=db.Column(db.String(80))
-    
-
+    teacher_id= db.Column(db.Integer, ForeignKey('registration.id'))
+    tid=relationship('registration',foreign_keys=[teacher_id])
+    message=db.Column(db.String(80))
+    response=db.Column(db.String(80))

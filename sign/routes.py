@@ -404,32 +404,33 @@ def manage_job():
     c= addjob.query.all()
     return render_template("manage_job.html",c=c)
 
+
 @login_required
-@app.route('/apply_job/<int:id>',methods=['GET', 'POST'])
-def apply_job(id):
-    job= addjob.query.get_or_404(id)
-    job_id=job.id
-    uid=current_user.id
-    print(uid)
+@app.route('/apply_jobs/<int:id>', methods=['GET', 'POST'])
+def apply_jobs(id):
+    job = addjob.query.get_or_404(id)
+    print("-----------jobid----------")
+    print(job)
+    job_id = id
+    print(job_id)
+    
+    user_id = session['uid']
+    print("user_id")
+    print(user_id)
+    c= addjob.query.all()
+
     if request.method == 'POST':
         image = request.files['resume']
         pic_file = save_to_uploads(image)
         view = pic_file 
         date = datetime.now()
 
-        my_data=apply_job(uid=uid,job_id=job_id,resume=view,date=date)
+        my_data = apply_job(user_id=user_id, job_id=job_id, resume=view, date=date)
         db.session.add(my_data)
         db.session.commit()
-        return render_template("dis_view_job.html",alert=True)
+        return render_template("dis_view_job.html",alert=True,c=c)
     
     return render_template("apply_job.html")
-
-
-
-
-
-
-
 
 
 
@@ -505,3 +506,7 @@ def random_with_N_digits(n):
 
 
 
+@login_required
+@app.route('/chat_tec')
+def chat():
+    return render_template("chat_tec.html")
