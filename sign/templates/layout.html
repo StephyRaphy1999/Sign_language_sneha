@@ -61,7 +61,7 @@ Author URL: http://w3layouts.com
 
 
           <li class="nav-item @@about__active">
-            <a class="nav-link" href="/">View Applicant List</a>
+            <a class="nav-link" href="/apply_manage">View Applicant List</a>
           </li>
 
 
@@ -127,6 +127,16 @@ Author URL: http://w3layouts.com
                   <a class="nav-link" href="/chat_tec">chatbox </a></li>
                   <li class="nav-item @@about__active">
               <a class="nav-link" href="/logout">Logout</a></li>
+
+
+              {% elif session['ut'] == "teacher" %}
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                 <a class="nav-link" href="/view_chat">viewchat</a></li>&nbsp;&nbsp;
+                 <li class="nav-item @@about__active">
+                  <a class="nav-link" href="/logout">Logout</a></li>
+                  <li class="nav-item @@about__active">
           
           {% else %} 
           <li class="nav-item active">

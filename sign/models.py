@@ -65,3 +65,4 @@ class chat_tec(db.Model, UserMixin):
     tid=relationship('registration',foreign_keys=[teacher_id])
     message=db.Column(db.String(80))
     response=db.Column(db.String(80))
+    status=db.Column(db.String(80),default='NULL')

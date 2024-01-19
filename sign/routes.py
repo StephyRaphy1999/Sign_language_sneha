@@ -26,6 +26,7 @@ def log():
         org=registration.query.filter_by(email=email,password=password, usertype= 'org').first()
         emp=registration.query.filter_by(email=email,password=password, usertype= 'emp').first()
         disabled=registration.query.filter_by(email=email,password=password, usertype= 'disabled').first()
+        teacher=registration.query.filter_by(email=email,password=password, usertype= 'teacher').first()
         if admin:
             session['uid']=admin.id
             session['ut']=admin.usertype
@@ -58,6 +59,14 @@ def log():
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect('/')  
          
+        elif teacher:
+            session['uid']=teacher.id
+            session['ut']=teacher.usertype
+
+            login_user(teacher)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect('/')  
+         
         else:
             return render_template("log.html")
     return render_template("log.html")
@@ -70,6 +79,10 @@ def index():
 @app.route('/reg')
 def register():
     return render_template("reg.html")
+
+@app.route('/teacher')
+def teacher():
+    return render_template("teacher.html")
 
 # @app.route('/org')
 # def org():
@@ -471,6 +484,12 @@ def vw_job():
     c= addjob.query.all()
     return render_template("dis_view_job.html",c=c)
 
+
+@app.route('/apply_manage')
+def apply_manage():
+    c= apply_job.query.all()
+    return render_template("apply_manage.html",c=c)
+
 @app.route('/delete/<int:id>')
 @login_required
 def delete(id):
@@ -507,6 +526,49 @@ def random_with_N_digits(n):
 
 
 @login_required
-@app.route('/chat_tec')
-def chat():
-    return render_template("chat_tec.html")
+@app.route('/chat_tec',methods=['GET','POST'])
+def chat_tech():
+    u=current_user.id
+    b = registration.query.filter_by(usertype="teacher").all()
+    print(b)
+    # a = registration.query.filter_by(user_id=u).first()
+    if request.method == 'POST':
+
+        message = request.form['message']
+        teachers = request.form['teachers']
+
+
+        my_data = chat_tec(user_id=u,message=message,teacher_id=teachers)
+        db.session.add(my_data)
+        db.session.commit()
+        return render_template("chat_tec.html",b=b)
+
+    return render_template("chat_tec.html",b=b)
+
+@login_required
+@app.route('/view_chat')
+def viewchat():
+    a = registration.query.filter_by(id=session['uid']).first()
+    print(session['uid'])
+    b=None
+    if a:
+        name=a.fname
+        print(name)
+        b=chat_tec.query.filter_by(teacher_id=name,status="NULL").all()
+        print(b)
+    return render_template("view_chat.html",a=a,b=b)
+
+@login_required
+@app.route('/response/<int:id>',methods=['GET', 'POST'])
+def response(id):
+    c= chat_tec.query.get_or_404(id)
+    if request.method == 'POST':
+        c.response =request.form['response']
+        c.status="added"
+        db.session.commit()
+        return render_template("response.html",alert=True)
+    return render_template("response.html")
+
+
+
+

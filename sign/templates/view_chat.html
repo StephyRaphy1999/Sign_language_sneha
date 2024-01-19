@@ -1,0 +1,55 @@
+{%extends 'layout.html'%}
+{%block content%}
+
+<div class="newsletter_right_w3agile py-5" id="newsletter">
+    <div class="container py-xl-5 py-lg-3">
+        <!-- heading title -->
+        <div class="main-title text-center mb-5"><BR><BR>
+            <h3 class="tittle text-uppercase text-white font-weight-bold">CHATBOX</h3>
+            <div class="title-icon">
+                <i class="fa fa-comments-o"></i>
+            </div>
+            
+        </div>
+        <style>
+            .button1
+            {
+               background-color: rgb(1, 21, 20);
+            }
+           
+           </style>
+
+                <table class="table table-striped table-bordered" style="color: #ffff;">
+                    <thead>
+                        <tr>
+                            
+                            <th>NAME</th>
+                            <th>EMAIL</th>
+                            <th>CONTACT</th>
+                            <th>MESSAGE</th>
+                            <th>RESPONSE</th>
+                            <th>STATUS</th>
+
+                        </tr>
+                    </thead>
+                <tbody>
+{% if b %}
+                {% for i in b %}
+                <tr>            
+                    <td>{{i.uid.fname}}</td>
+                    <td>{{i.uid.email}}</td>
+                    <td>{{i.uid.contact}}</td>
+                    <td>{{i.message}}</td>
+                    <td><button type="button" class="button1"><a href="/response/{{i.uid.id}}">RESPONSE</a></button></td>
+                    <!-- <td>{{i.uid.status}}</td> -->
+
+             
+                </tr>       
+                {% endfor %}
+                {% endif %}    
+                </tbody>
+                </table>
+</div>
+</div>
+
+{%endblock%}

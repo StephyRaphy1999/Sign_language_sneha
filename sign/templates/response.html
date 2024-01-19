@@ -5,30 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-
-       
+    {% if alert %}
+        <script>
+            alert("-------responed--------")
+        </script>
+    {% endif %}
 </head>
 
 <body bgcolor="black" text="white">
 
   <hr><hr>  <center>
-   <b><h1>CHATBOX</h1></b> 
+   <b><h1>RESPONSE</h1></b> 
   <i class="fa fa-comments-o" style="color:rgb(243, 255, 78)"></i></center> <hr><hr><br><br>
    <center><div><p>
-       <h2>
-         <form method="post">
-        <label for="teachers">TEACHER'S NAME</label><BR>
-        <select name="teachers" id="teachers">
-            {% for i in b %}
-                <option value="{{i.fname}}">{{i.fname}}</option>
-            {% endfor %}
-        </select><br><br></h2>
-
-        <h2><label for="fname">message</label>
-        <input type="text" id="message" name="message"><br><br></h2>
-
-
-
+       
+        
+<form>
+        <h2><label for="fname">response</label>
+        <input type="text" id="response" name="response"><br><br></h2>
 
         <br><br>
         <input type="submit" value="Submit">
