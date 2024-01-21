@@ -24,29 +24,24 @@
                         <tr>
                             
                             <th>NAME</th>
-                            <th>EMAIL</th>
-                            <th>CONTACT</th>
                             <th>MESSAGE</th>
                             <th>RESPONSE</th>
-                            <th>STATUS</th>
+                            
+                            <!-- <th>STATUS</th> -->
 
                         </tr>
                     </thead>
                 <tbody>
-{% if b %}
-                {% for i in b %}
+                {% for i in a %}
                 <tr>            
-                    <td>{{i.uid.fname}}</td>
-                    <td>{{i.uid.email}}</td>
-                    <td>{{i.uid.contact}}</td>
+                    <td>{{i.tid.fname}}</td>
                     <td>{{i.message}}</td>
-                    <td><button type="button" class="button1"><a href="/response/{{i.id}}">RESPONSE</a></button></td>
+                    <td>{{i.response}}</td>
                     <!-- <td>{{i.uid.status}}</td> -->
 
              
                 </tr>       
                 {% endfor %}
-                {% endif %}    
                 </tbody>
                 </table>
 </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,34 +6,109 @@
     <title>Document</title>
 
 
+    {% if alert %}
+    <script>
+        alert("-------message send--------")
+    </script>
+{% endif %}
+</head> -->
+{% extends 'layout.html' %}
+{% block content %}
+
+{% if alert %}
+			<script>
+				alert("Applied!!!!!!!")
+			</script>
+		{% endif %}    
+
+
+<!DOCTYPE html>
+<html>
+	
+<title>Library Membership Form A Flat Responsive Widget Template :: w3layouts</title>
+<!-- meta_tags-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Library Membership form A Flat Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta_tag_Keywords-->
+<!--css_files-->
+	<link rel="stylesheet" href="../static/registeration/css/style.css"/>
+	<link href="../static/registeration/css/style.css" rel="stylesheet" type="text/css" media="all"/><!--stylesheet-->
+	<link rel="stylesheet" href="../static/registeration/css/font-awesome.css"><!--font_wesome_icons-->
+	<link href="//fonts.googleapis.com/css?family=PT+Sans+Caption" rel="stylesheet"><!--online_fonts-->
+	<link href="//fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet"><!--online_fonts-->
+<!--//css_files-->
+
+    <style>
+      .items
+      {
+        
+        width: 50%;
+        text-align: center;
+        margin-left: 375px;
        
+      }
+
+      input[type=text]
+      {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border: 2px solid rgb(255, 255, 255);
+          border-radius: 4px;
+          color: white;
+      }
+
+      ::placeholder
+      {
+              color: rgb(255, 255, 255);
+              opacity: 1;
+      }
+    </style>
 </head>
 
-<body bgcolor="black" text="white">
+<body><br><br><br><br><br><br><br><br><br><br><br>
+  
+    <div class="items">
+      <h1>CHATBOX</h1>
+      <i class="fa fa-comments-o" style="color:rgb(243, 255, 78)"></i><br><br>
 
-  <hr><hr>  <center>
-   <b><h1>CHATBOX</h1></b> 
-  <i class="fa fa-comments-o" style="color:rgb(243, 255, 78)"></i></center> <hr><hr><br><br>
-   <center><div><p>
-       <h2>
-         <form method="post">
-        <label for="teachers">TEACHER'S NAME</label><BR>
-        <select name="teachers" id="teachers">
-            {% for i in b %}
-                <option value="{{i.fname}}">{{i.fname}}</option>
-            {% endfor %}
-        </select><br><br></h2>
+      <form method="post">
+            <h2>Select teacher</h2><br>
 
-        <h2><label for="fname">message</label>
-        <input type="text" id="message" name="message"><br><br></h2>
+              <select name="teachers" id="teachers">
+                {% for i in b %}
+                    <option value="{{i.fname}}">{{i.fname}}</option>
+                {% endfor %}
+              </select><br><br><br>
 
 
+              <input type="text" placeholder="Enter your message" name="message"><br><br>
 
+              <input type="submit" value="Submit"><br><br>
 
-        <br><br>
-        <input type="submit" value="Submit">
-      </form>
-    </div></center></p>
+              <a href="/view_response" class="btn btn-danger">View response</a>
+      </form><br><br>
+
+      </form><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
 
 </body>
 </html>
+
+<!-- Default-JavaScript -->
+<script type="text/javascript" src="../static/registeration/js/jquery-2.1.4.min.js"></script>
+
+<!-- Calendar -->
+<script src="../static/registeration/js/jquery-ui.js"></script>
+	<script>
+		$(function() {
+		$( "#datepicker,#datepicker1" ).datepicker();
+		});
+	</script>
+<!-- //Calendar -->
+
+{% endblock %}

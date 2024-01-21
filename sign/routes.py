@@ -535,13 +535,17 @@ def chat_tech():
     if request.method == 'POST':
 
         message = request.form['message']
+        print(message)
         teachers = request.form['teachers']
-
+        print(teachers)
 
         my_data = chat_tec(user_id=u,message=message,teacher_id=teachers)
+        print(my_data)
         db.session.add(my_data)
+        print("---------------1---------")
         db.session.commit()
-        return render_template("chat_tec.html",b=b)
+        print("------------2-------------")
+        return redirect('/')
 
     return render_template("chat_tec.html",b=b)
 
@@ -561,14 +565,22 @@ def viewchat():
 @login_required
 @app.route('/response/<int:id>',methods=['GET', 'POST'])
 def response(id):
-    c= chat_tec.query.get_or_404(id)
+    c= chat_tec.query.filter_by(id=id).first()
+    print(c.id)
     if request.method == 'POST':
-        c.response =request.form['response']
+        c.response = request.form['response']
+        print(c.response)
+        print("___________rrr_________")
         c.status="added"
+        print(c.status)
         db.session.commit()
-        return render_template("response.html",alert=True)
+        return redirect('/')
     return render_template("response.html")
 
-
-
-
+@login_required
+@app.route('/view_response')
+def viewresponse():
+    u_id=current_user.id
+    print(u_id)
+    a = chat_tec.query.filter_by(user_id=u_id).all()
+    return render_template("view_response.html",a=a)
